@@ -1,6 +1,21 @@
 # SimpleSerilog
 
-## Sample log content
+### ASP.NET Core 3.1
+
+### Additional Package
+      <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+      <PackageReference Include="Serilog.Enrichers.CallerInfo" Version="1.0.3" />
+      <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+
+### Memo
+
+#### configuration
+    Programs.cs
+#### log action
+    Controllers/WeatherForecastController.cs
+
+
+### Sample log content
 
 ```
 [15:00:17.756 DBG] Random generator creates 0 [SimpleLog.Controllers.WeatherForecastController::Get():34]
