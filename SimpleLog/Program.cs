@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Core;
 using Serilog.Enrichers.CallerInfo;
 using Serilog.Events;
 using Serilog.Exceptions;
@@ -24,8 +25,14 @@ namespace SimpleLog
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .Enrich.WithCallerInfo(includeFileInfo: true, assemblyPrefix: "SimpleLog")
                 .WriteTo.Console(
+                    restrictedToMinimumLevel: LogEventLevel.Information,
                     outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {Message:lj} [{SourceContext}::{Method}():{LineNumber}]{NewLine}{Exception}"
                 )
+                .WriteTo.File(
+                    "SimpleLog.txt",
+                    restrictedToMinimumLevel: LogEventLevel.Debug,
+                    outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {Message:lj} [{SourceContext}.{Method}:{LineNumber}]{NewLine}{Exception}"
+                    )
                 .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }

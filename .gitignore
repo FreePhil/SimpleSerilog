@@ -45,6 +45,7 @@ Generated\ Files/
 # NUNIT
 *.VisualState.xml
 TestResult.xml
+SimpleLog.txt
 
 # Build Results of an ATL Project
 [Dd]ebugPS/
@@ -61,6 +62,7 @@ artifacts/
 
 # StyleCop
 StyleCopReport.xml
+
 
 # Files built by Visual Studio
 *_i.c

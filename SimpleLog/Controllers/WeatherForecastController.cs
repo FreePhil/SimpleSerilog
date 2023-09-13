@@ -35,7 +35,7 @@ namespace SimpleLog.Controllers
 
                 if (error >= 6)
                 {
-                    _logger.LogWarning("Error should not exceed 5, current value: {ErrorCode}", error);
+                    _logger.LogWarning("Value should not exceed 5, current value: {ErrorCode}", error);
 
                     error = 0;
                 }
