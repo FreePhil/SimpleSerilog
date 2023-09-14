@@ -13,6 +13,8 @@ using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Formatting.Compact;
 using Serilog.Formatting.Json;
+using Serilog.Sinks.MariaDB;
+using Serilog.Sinks.MariaDB.Extensions;
 
 namespace SimpleLog
 {
@@ -32,6 +34,16 @@ namespace SimpleLog
                     "SimpleLog.txt",
                     restrictedToMinimumLevel: LogEventLevel.Debug,
                     outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {Message:lj} [{SourceContext}.{Method}:{LineNumber}]{NewLine}{Exception}"
+                    )
+                .WriteTo.MariaDB(
+                    connectionString: "server=localhost;user id=root;password=sample;database=logs",
+                    tableName: "WeatherLogs",
+                    restrictedToMinimumLevel: LogEventLevel.Debug,
+                    autoCreateTable: true,
+                    options: new MariaDBSinkOptions
+                    {
+                        ExcludePropertiesWithDedicatedColumn = false
+                    }
                     )
                 .CreateLogger();
             CreateHostBuilder(args).Build().Run();
