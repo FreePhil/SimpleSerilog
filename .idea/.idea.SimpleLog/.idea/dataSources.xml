@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="User Data Source" uuid="896cb9f0-91ef-4fad-9f6d-de5c5f60d00d">
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>java.sql.Driver</jdbc-driver>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="local mariadb" uuid="18c64668-4bcf-4f99-9369-60b2badf9882">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>

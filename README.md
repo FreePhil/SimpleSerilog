@@ -6,7 +6,7 @@
       <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
       <PackageReference Include="Serilog.Enrichers.CallerInfo" Version="1.0.3" />
       <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-
+      <PackageReference Include="Serilog.Sinks.MariaDB" Version="1.0.1" />
 ### Memo
 
 #### configuration
@@ -14,6 +14,32 @@
 #### log action
     Controllers/WeatherForecastController.cs
 
+### MariaDB query & result
+
+```
+select Timestamp, json_value(Properties, '$.RandomNumber') as RandomNumber, Message from WeatherLogs
+where json_value(Properties, '$.RandomNumber') <= 5
+```
+
+| Timestamp | RandomNumber | Message |
+| :--- | :--- | :--- |
+| 2023-09-14 09:17:58.937583 | 1 | Random generator creates 1 |
+| 2023-09-14 09:18:36.216370 | 2 | Random generator creates 2 |
+| 2023-09-14 09:18:37.760108 | 2 | Random generator creates 2 |
+| 2023-09-14 09:26:09.379460 | 2 | Random generator creates 2 |
+| 2023-09-14 09:26:10.797438 | 4 | Random generator creates 4 |
+| 2023-09-14 09:26:11.337326 | 3 | Random generator creates 3 |
+| 2023-09-14 09:26:11.667846 | 5 | Random generator creates 5 |
+| 2023-09-14 09:26:12.011741 | 5 | Random generator creates 5 |
+| 2023-09-14 09:26:12.311992 | 5 | Random generator creates 5 |
+| 2023-09-14 09:26:12.957109 | 4 | Random generator creates 4 |
+| 2023-09-14 09:26:13.276937 | 0 | Random generator creates 0 |
+| 2023-09-14 09:26:13.550278 | 5 | Random generator creates 5 |
+| 2023-09-14 09:26:13.857673 | 1 | Random generator creates 1 |
+| 2023-09-14 09:26:14.172147 | 3 | Random generator creates 3 |
+| 2023-09-14 09:26:14.803346 | 5 | Random generator creates 5 |
+| 2023-09-14 09:26:15.649495 | 3 | Random generator creates 3 |
+| 2023-09-14 09:26:15.927463 | 0 | Random generator creates 0 |
 
 ### Sample log content
 
